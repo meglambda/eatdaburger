@@ -1,24 +1,26 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-  $(".change-sleep").on("click", function(event) {
+  $("#eatme").on("click", function(event) {
+    console.log("click button");
+   console.log(this.id);
     var id = $(this).data("id");
-    var newDevoured = $(this).data("newsleep");
+    var newDevoured = $(this).data("");
 
     var newDevouredState = {
       devoured: newDevoured
     };
 
     // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
-      type: "PUT",
-      data: newDevouredState
-    }).then(
-      function() {
-        console.log("changed devoured to", newDevoured);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    // $.ajax("/api/food/" + id, {
+    //   type: "PUT",
+    //   data: newDevouredState
+    // }).then(
+    //   function() {
+    //     console.log("changed devoured to", newDevoured);
+    //     // Reload the page to get the updated list
+    //     location.reload();
+    //   }
+    // );
   });
 
   $(".create-form").on("submit", function(event) {
@@ -31,16 +33,16 @@ $(function() {
     };
 
     // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    // $.ajax("/api/food", {
+    //   type: "POST",
+    //   data: newBurger
+    // }).then(
+    //   function() {
+    //     console.log("created new burger");
+    //     // Reload the page to get the updated list
+    //     location.reload();
+    //   }
+    // );
   });
 
   // $(".delete-cat").on("click", function(event) {
